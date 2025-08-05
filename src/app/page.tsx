@@ -124,7 +124,7 @@ export default function ChatPage() {
   // Show loading state while checking authentication
   if (sessionStatus === "loading") {
     return (
-      <div className="flex h-screen w-full bg-background items-center justify-center">
+      <div className="flex h-screen h-[100dvh] w-full bg-background items-center justify-center">
         <div className="flex flex-col items-center gap-6">
           <div className="relative">
             <div className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-8 rounded-full mb-4">
@@ -148,7 +148,7 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="flex h-screen w-full bg-background overflow-hidden">
+    <div className="flex h-screen h-[100dvh] w-full bg-background overflow-hidden">
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden border-t">
         {/* Top Navbar*/}
@@ -164,14 +164,14 @@ export default function ChatPage() {
             <div className="flex items-center gap-2">
               {session?.user ? (
                 <>
-                  <div className="flex items-center gap-2 px-3 py-1 rounded-lg bg-muted/50">
+                  <div className="hidden md:flex items-center gap-2 px-3 py-1 rounded-lg bg-muted/50">
                     <Avatar className="h-6 w-6">
                       <AvatarImage src={session.user.image || ""} alt={session.user.name || ""} />
                       <AvatarFallback className="text-xs">
                         {session.user.name?.charAt(0) || session.user.email?.charAt(0) || "U"}
                       </AvatarFallback>
                     </Avatar>
-                    <span className="text-sm font-medium hidden sm:block">
+                    <span className="text-sm font-medium">
                       {session.user.name}
                     </span>
                   </div>

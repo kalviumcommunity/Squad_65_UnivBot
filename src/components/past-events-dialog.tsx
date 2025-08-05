@@ -128,7 +128,7 @@ export function PastEventsDialog({ open, onOpenChange }: PastEventsDialogProps) 
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[80vh] flex flex-col w-[calc(100vw-3rem)] sm:w-auto max-w-[calc(100vw-3rem)] sm:max-w-4xl" showCloseButton={false}>
+      <DialogContent className="w-[calc(100vw-2rem)] max-w-[calc(100vw-2rem)] sm:w-auto sm:max-w-4xl max-h-[80vh] flex flex-col mx-2 sm:mx-0" showCloseButton={false}>
         {/* Fixed Header */}
         <div className="flex-shrink-0">
           <div className="flex items-center justify-between">
@@ -141,14 +141,14 @@ export function PastEventsDialog({ open, onOpenChange }: PastEventsDialogProps) 
             <Button
               variant="ghost"
               size="sm"
-              className="h-8 px-3 text-sm"
+              className="h-8 px-3 text-sm flex-shrink-0"
               onClick={() => onOpenChange(false)}
             >
               Close
             </Button>
           </div>
           
-          <DialogDescription className="mt-2">
+          <DialogDescription className="mt-2 break-words">
             View all completed/pending activities.
           </DialogDescription>
         </div>
@@ -162,23 +162,25 @@ export function PastEventsDialog({ open, onOpenChange }: PastEventsDialogProps) 
               className="p-4 rounded-lg border border-border transition-all duration-200 hover:shadow-md"
             >
                              <div className="flex-1">
-                 <div className="flex items-center gap-3 mb-2">
-                   <h3 className="font-semibold text-lg">{event.title}</h3>
-                   <Badge className={getEventTypeColor(event.type)}>
-                     {event.type}
-                   </Badge>
-                   <Badge variant="secondary" className="bg-green-100 text-green-800">
-                     {event.status}
-                   </Badge>
+                 <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
+                   <h3 className="font-semibold text-lg break-words">{event.title}</h3>
+                   <div className="flex flex-wrap gap-2">
+                     <Badge className={`${getEventTypeColor(event.type)} flex-shrink-0`}>
+                       {event.type}
+                     </Badge>
+                     <Badge variant="secondary" className="bg-green-100 text-green-800 flex-shrink-0">
+                       {event.status}
+                     </Badge>
+                   </div>
                  </div>
                  
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-muted-foreground">
                      <div className="flex items-center gap-2">
-                       <Calendar className="h-4 w-4" />
-                       <span>{formatDate(event.date)}</span>
+                       <Calendar className="h-4 w-4 flex-shrink-0" />
+                       <span className="break-words">{formatDate(event.date)}</span>
                      </div>
                      <div className="flex items-center gap-2">
-                       <Clock className="h-4 w-4" />
+                       <Clock className="h-4 w-4 flex-shrink-0" />
                        <span>{event.time}</span>
                      </div>
                    </div>
@@ -186,15 +188,15 @@ export function PastEventsDialog({ open, onOpenChange }: PastEventsDialogProps) 
                    <div className="flex items-center gap-2 mt-3">
                      {event.type === 'Document' ? (
                        <>
-                         <FileText className="h-4 w-4 text-muted-foreground" />
-                         <span className="text-sm text-muted-foreground">
+                         <FileText className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                         <span className="text-sm text-muted-foreground break-words">
                            {event.fileSize} • {event.fileName}
                          </span>
                        </>
                      ) : (
                        <>
-                         <Wrench className="h-4 w-4 text-muted-foreground" />
-                         <span className="text-sm text-muted-foreground">
+                         <Wrench className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                         <span className="text-sm text-muted-foreground break-words">
                            {event.toolUsed} Tool
                          </span>
                        </>
@@ -205,7 +207,7 @@ export function PastEventsDialog({ open, onOpenChange }: PastEventsDialogProps) 
                      <Button
                        variant="outline"
                        size="sm"
-                       className="h-7 px-2 text-xs"
+                       className="h-7 px-2 text-xs flex-shrink-0"
                        onClick={() => {
                          if (event.action === 'download') {
                            console.log(`Downloading ${event.fileName}`)
