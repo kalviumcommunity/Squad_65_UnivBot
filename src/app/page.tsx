@@ -153,15 +153,15 @@ export default function ChatPage() {
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden border-t">
         {/* Top Navbar*/}
         <header className="flex-shrink-0 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-          <div className="flex items-center justify-between p-2 pl-6 pr-10">
-            <div className="flex items-center gap-3">
-              <div className="flex flex-col">
-                <h1 className="text-xl font-bold flex items-center gap-2">🎓 UnivBot</h1>
-                <p className="text-sm text-muted-foreground">Your Campus Assistant</p>
+          <div className="flex items-center justify-between p-2 pl-4 pr-4 sm:pl-6 sm:pr-10">
+            <div className="flex items-center gap-3 min-w-0 flex-1">
+              <div className="flex flex-col min-w-0">
+                <h1 className="text-lg sm:text-xl font-bold flex items-center gap-2">🎓 UnivBot</h1>
+                <p className="text-xs sm:text-sm text-muted-foreground hidden sm:block">Your Campus Assistant</p>
               </div>
             </div>
             {/* Right side buttons */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
               {session?.user ? (
                 <>
                   <div className="hidden md:flex items-center gap-2 px-3 py-1 rounded-lg bg-muted/50">
@@ -178,10 +178,11 @@ export default function ChatPage() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-8 px-3 text-sm"
+                    className="h-8 px-2 sm:px-3 text-xs sm:text-sm"
                     onClick={() => setIsPastEventsOpen(true)}
                   >
-                    Past Events
+                    <span className="hidden sm:inline">Past Events</span>
+                    <span className="sm:hidden">Events</span>
                   </Button>
                   <Button
                     variant="ghost"
@@ -198,10 +199,11 @@ export default function ChatPage() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-8 px-3 text-sm"
+                    className="h-8 px-2 sm:px-3 text-xs sm:text-sm"
                     onClick={() => setIsPastEventsOpen(true)}
                   >
-                    Past Events
+                    <span className="hidden sm:inline">Past Events</span>
+                    <span className="sm:hidden">Events</span>
                   </Button>
                   <Button
                     variant="ghost"
