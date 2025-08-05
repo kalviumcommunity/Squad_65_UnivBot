@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { signIn, useSession } from "next-auth/react"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -9,24 +10,41 @@ import { X, Chrome, Shield, Users, Zap } from "lucide-react"
 interface SignInDialogProps {
   open: boolean
   onOpenChange: (open: boolean) => void
+  nonDismissible?: boolean
 }
 
-export function SignInDialog({ open, onOpenChange }: SignInDialogProps) {
+export function SignInDialog({ open, onOpenChange, nonDismissible = false }: SignInDialogProps) {
   const [isLoading, setIsLoading] = useState(false)
+  const { data: session } = useSession()
 
   const handleGoogleSignIn = async () => {
     setIsLoading(true)
-    // TODO: Implement Google OAuth
-    console.log("Google sign-in clicked")
-    setTimeout(() => {
+    try {
+      await signIn("google", { callbackUrl: "/" })
+    } catch (error) {
+      console.error("Sign in error:", error)
       setIsLoading(false)
-      onOpenChange(false)
-    }, 2000)
+    }
+  }
+
+  // Close dialog if user is already signed in (unless non-dismissible)
+  if (session && open && !nonDismissible) {
+    onOpenChange(false)
+    return null
   }
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md w-[calc(100vw-3rem)] sm:w-auto max-w-[calc(100vw-3rem)] sm:max-w-md" showCloseButton={false}>
+    <Dialog 
+      open={open} 
+      onOpenChange={nonDismissible ? undefined : onOpenChange}
+      modal={true}
+    >
+      <DialogContent 
+        className="max-w-md w-[calc(100vw-3rem)] sm:w-auto max-w-[calc(100vw-3rem)] sm:max-w-md" 
+        showCloseButton={!nonDismissible}
+        onPointerDownOutside={nonDismissible ? (e) => e.preventDefault() : undefined}
+        onEscapeKeyDown={nonDismissible ? (e) => e.preventDefault() : undefined}
+      >
         {/* Header with Close Button */}
         <div className="flex items-center justify-between">
           <DialogTitle className="flex items-center gap-2 text-xl">
@@ -35,15 +53,17 @@ export function SignInDialog({ open, onOpenChange }: SignInDialogProps) {
             </div>
             Sign In
           </DialogTitle>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-8 w-8"
-            onClick={() => onOpenChange(false)}
-          >
-            <X className="h-4 w-4" />
-            <span className="sr-only">Close</span>
-          </Button>
+          {!nonDismissible && (
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8"
+              onClick={() => onOpenChange(false)}
+            >
+              <X className="h-4 w-4" />
+              <span className="sr-only">Close</span>
+            </Button>
+          )}
         </div>
 
         <DialogDescription className="mt-2">
@@ -65,8 +85,6 @@ export function SignInDialog({ open, onOpenChange }: SignInDialogProps) {
             )}
             {isLoading ? "Signing in..." : "Continue with Google"}
           </Button>
-
-
         </div>
 
         {/* Benefits Section */}
@@ -87,8 +105,6 @@ export function SignInDialog({ open, onOpenChange }: SignInDialogProps) {
             </div>
           </div>
         </div>
-
-
       </DialogContent>
     </Dialog>
   )

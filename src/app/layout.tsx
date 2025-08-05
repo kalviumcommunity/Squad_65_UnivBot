@@ -1,8 +1,9 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Providers } from "@/components/providers/session-provider"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -11,12 +12,25 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "UnivBot - Your Campus Doubt Solver",
+  title: "UnivBot - Your Campus Assistant",
   description:
     "AI-powered chatbot to help university students with academic queries, exam schedules, and campus resources.",
   keywords: ["university", "chatbot", "AI", "campus", "student", "academic"],
-  authors: [{ name: "UnivBot Team" }],
-  viewport: "width=device-width, initial-scale=1",
+  authors: [{ name: "Rohit Kumar" }],
+  icons: {
+    icon: [
+      { url: "/favicon/favicon.ico", sizes: "any" },
+      { url: "/favicon/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/favicon/apple-touch-icon.png",
+    shortcut: "/favicon/favicon.ico",
+  },
+  manifest: "/favicon/site.webmanifest",
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 }
 
 export default function RootLayout({
@@ -27,15 +41,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
       <body className={`${inter.className} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange={false}
-          storageKey="univbot-theme"
-        >
-          {children}
-        </ThemeProvider>
+        <Providers>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange={false}
+            storageKey="univbot-theme"
+          >
+            {children}
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   )
