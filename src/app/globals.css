@@ -173,8 +173,27 @@
 /* Prevent unwanted scrolling */
 html,
 body {
-  overflow: hidden;
   height: 100%;
+}
+
+/* Apply overflow hidden only to the main app container */
+#__next {
+  overflow: hidden;
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for mobile */
+}
+
+/* Mobile-specific height adjustments */
+@media (max-width: 768px) {
+  #__next {
+    height: 100vh;
+    height: 100dvh;
+    min-height: -webkit-fill-available;
+  }
+  
+  body {
+    min-height: -webkit-fill-available;
+  }
 }
 
 /* Reduced motion support */

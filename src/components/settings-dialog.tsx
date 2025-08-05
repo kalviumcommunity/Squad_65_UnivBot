@@ -34,7 +34,7 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto w-[calc(100vw-3rem)] sm:w-auto max-w-[calc(100vw-3rem)] sm:max-w-2xl">
+      <DialogContent className="w-[calc(100vw-2rem)] max-w-[calc(100vw-2rem)] sm:w-auto sm:max-w-2xl max-h-[80vh] overflow-y-auto mx-2 sm:mx-0">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-xl">
             <div className="p-2 bg-blue-500/10 rounded-lg">
@@ -42,25 +42,25 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
             </div>
             Settings
           </DialogTitle>
-          <DialogDescription>Customize your UnivBot experience with these preferences.</DialogDescription>
+          <DialogDescription className="break-words">Customize your UnivBot experience with these preferences.</DialogDescription>
         </DialogHeader>
 
         <div className="space-y-6 py-4">
           {/* Appearance Section */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <Palette className="h-4 w-4 text-primary" />
+              <Palette className="h-4 w-4 text-primary flex-shrink-0" />
               <h3 className="text-lg font-semibold">Appearance</h3>
             </div>
 
             <div className="space-y-4 pl-6">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div className="flex flex-col gap-4">
                 <div className="space-y-1 flex-1">
                   <Label htmlFor="theme">Theme</Label>
-                  <p className="text-sm text-muted-foreground">Choose your preferred color theme</p>
+                  <p className="text-sm text-muted-foreground break-words">Choose your preferred color theme</p>
                 </div>
                 <Select value={theme} onValueChange={setTheme}>
-                  <SelectTrigger className="w-full sm:w-40">
+                  <SelectTrigger className="w-full">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -93,7 +93,7 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
           {/* API Configuration Section */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <Key className="h-4 w-4 text-primary" />
+              <Key className="h-4 w-4 text-primary flex-shrink-0" />
               <h3 className="text-lg font-semibold">API Configuration</h3>
             </div>
 
@@ -101,7 +101,7 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
               <div className="space-y-2">
                 <div className="space-y-1">
                   <Label htmlFor="gemini-api-key">Gemini API Key</Label>
-                  <p className="text-sm text-muted-foreground">Enter your Gemini API key to access the features</p>
+                  <p className="text-sm text-muted-foreground break-words">Enter your Gemini API key to access the features</p>
                 </div>
                 <Input
                   id="gemini-api-key"
@@ -132,30 +132,30 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
               <Separator />
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
-                  <User className="h-4 w-4 text-primary" />
+                  <User className="h-4 w-4 text-primary flex-shrink-0" />
                   <h3 className="text-lg font-semibold">Account</h3>
                 </div>
 
                 <div className="space-y-4 pl-6">
-                  <div className="flex items-center gap-4 p-4 bg-muted/50 rounded-lg">
-                    <Avatar className="h-12 w-12">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 bg-muted/50 rounded-lg">
+                    <Avatar className="h-12 w-12 flex-shrink-0">
                       <AvatarImage src={session.user.image || ""} alt={session.user.name || ""} />
                       <AvatarFallback>
                         {session.user.name?.charAt(0) || session.user.email?.charAt(0) || "U"}
                       </AvatarFallback>
                     </Avatar>
-                    <div className="flex-1 space-y-1">
-                      <p className="font-medium">{session.user.name}</p>
+                    <div className="flex-1 space-y-1 min-w-0">
+                      <p className="font-medium truncate">{session.user.name}</p>
                       <p className="text-sm text-muted-foreground flex items-center gap-1">
-                        <Mail className="h-3 w-3" />
-                        {session.user.email}
+                        <Mail className="h-3 w-3 flex-shrink-0" />
+                        <span className="truncate">{session.user.email}</span>
                       </p>
                     </div>
                     <Button
                       variant="outline"
                       size="sm"
                       onClick={handleSignOut}
-                      className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                      className="text-red-600 hover:text-red-700 hover:bg-red-50 flex-shrink-0"
                     >
                       <LogOut className="h-4 w-4 mr-2" />
                       Sign Out

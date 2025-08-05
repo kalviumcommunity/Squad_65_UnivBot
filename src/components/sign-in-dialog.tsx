@@ -40,24 +40,24 @@ export function SignInDialog({ open, onOpenChange, nonDismissible = false }: Sig
       modal={true}
     >
       <DialogContent 
-        className="max-w-md w-[calc(100vw-3rem)] sm:w-auto max-w-[calc(100vw-3rem)] sm:max-w-md" 
+        className="w-[calc(100vw-1rem)] max-w-[calc(100vw-1rem)] min-w-0 sm:w-auto sm:max-w-md sm:min-w-0 mx-2 sm:mx-0 overflow-hidden" 
         showCloseButton={!nonDismissible}
         onPointerDownOutside={nonDismissible ? (e) => e.preventDefault() : undefined}
         onEscapeKeyDown={nonDismissible ? (e) => e.preventDefault() : undefined}
       >
         {/* Header with Close Button */}
-        <div className="flex items-center justify-between">
-          <DialogTitle className="flex items-center gap-2 text-xl">
-            <div className="p-2 bg-blue-500/10 rounded-lg">
+        <div className="flex items-center justify-between min-w-0">
+          <DialogTitle className="flex items-center gap-2 text-xl min-w-0">
+            <div className="p-2 bg-blue-500/10 rounded-lg flex-shrink-0">
               <Users className="h-5 w-5 text-blue-500" />
             </div>
-            Sign In
+            <span className="truncate">Sign In</span>
           </DialogTitle>
           {!nonDismissible && (
             <Button
               variant="ghost"
               size="icon"
-              className="h-8 w-8"
+              className="h-8 w-8 flex-shrink-0"
               onClick={() => onOpenChange(false)}
             >
               <X className="h-4 w-4" />
@@ -66,7 +66,7 @@ export function SignInDialog({ open, onOpenChange, nonDismissible = false }: Sig
           )}
         </div>
 
-        <DialogDescription className="mt-2">
+        <DialogDescription className="mt-2 break-words">
           Sign in to access your personalized UnivBot experience and save your conversation history.
         </DialogDescription>
 
@@ -83,7 +83,7 @@ export function SignInDialog({ open, onOpenChange, nonDismissible = false }: Sig
             ) : (
               <Chrome className="h-5 w-5" />
             )}
-            {isLoading ? "Signing in..." : "Continue with Google"}
+            <span className="truncate">{isLoading ? "Signing in..." : "Continue with Google"}</span>
           </Button>
         </div>
 
@@ -92,16 +92,16 @@ export function SignInDialog({ open, onOpenChange, nonDismissible = false }: Sig
           <h4 className="font-semibold text-sm">Why sign in?</h4>
           <div className="space-y-2">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Shield className="h-4 w-4 text-green-500" />
-              <span>Secure and private conversations</span>
+              <Shield className="h-4 w-4 text-green-500 flex-shrink-0" />
+              <span className="break-words">Secure and private conversations</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Zap className="h-4 w-4 text-blue-500" />
-              <span>Faster responses with personalized context</span>
+              <Zap className="h-4 w-4 text-blue-500 flex-shrink-0" />
+              <span className="break-words">Faster responses with personalized context</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Users className="h-4 w-4 text-purple-500" />
-              <span>Access to your conversation history</span>
+              <Users className="h-4 w-4 text-purple-500 flex-shrink-0" />
+              <span className="break-words">Access to your conversation history</span>
             </div>
           </div>
         </div>
