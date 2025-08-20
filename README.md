@@ -245,3 +245,46 @@ Answer: 40 km/h.
 * If you liked `"Interstellar"`, the system finds movies with **embedding vectors** closest to `"Interstellar"` and recommends them.
 
 ---
+
+### Cosine Similarity
+ → A metric used to measure **how similar two vectors are**, based on the **cosine of the angle** between them.
+
+* Value ranges from **-1** to **1**:
+
+  * **1** → exactly similar (same direction)
+  * **0** → no similarity (orthogonal)
+  * **-1** → completely opposite
+
+### **Example**
+
+Let’s say we have two vectors:
+
+* **A = \[1, 2]**
+* **B = \[2, 3]**
+
+$$
+\text{Cosine Similarity} = \frac{A \cdot B}{||A|| \, ||B||}
+$$
+
+**Step 1 — Dot product:**
+
+$$
+A \cdot B = (1)(2) + (2)(3) = 8
+$$
+
+**Step 2 — Magnitudes:**
+
+$$
+||A|| = \sqrt{1^2 + 2^2} = \sqrt{5}, \quad ||B|| = \sqrt{2^2 + 3^2} = \sqrt{13}
+$$
+
+**Step 3 — Cosine similarity:**
+
+$$
+\text{Cosine Similarity} = \frac{8}{\sqrt{5} \cdot \sqrt{13}} \approx 0.992
+$$
+
+**Interpretation:**
+A and B are **very similar** because the cosine similarity is close to **1**.
+
+---
