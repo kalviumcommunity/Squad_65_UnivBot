@@ -214,3 +214,34 @@ Answer: 40 km/h.
 ```
 
 ---
+
+### Embeddings
+→ Numerical representations of text, images, or other data in a **high-dimensional vector space** where **similar items are close together**. They’re used for **semantic search, recommendation systems, clustering, and NLP tasks**.
+
+---
+
+### **Examples**
+
+**1. Semantic Text Search**
+
+* Input: `"Best pizza places in Delhi"`
+* Embedding model converts the query & restaurant descriptions into vectors.
+* Finds the **closest vectors** → returns most relevant pizza places.
+
+---
+
+**2. Document Similarity**
+
+* Input documents:
+
+  * Doc A: `"Machine learning improves AI."`
+  * Doc B: `"Deep learning enhances artificial intelligence."`
+* Their embeddings will be **close** → meaning they're **semantically similar**.
+
+---
+
+**3. Recommendation System**
+
+* If you liked `"Interstellar"`, the system finds movies with **embedding vectors** closest to `"Interstellar"` and recommends them.
+
+---
