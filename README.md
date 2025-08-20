@@ -55,3 +55,21 @@ Context retrieval and function calls are optimized using chunking and prompt tem
 ### 📈 Scalability
 
 Built on Next.js API routes, the system can be easily scaled using Vercel or edge functions. Gemini API is highly scalable for inference.
+
+
+**Zero-shot prompting** → Asking an AI to perform a task **without giving any examples**, only instructions.
+
+### **Examples**
+
+1. **Sentiment Analysis**
+   *Prompt:* “Is this review positive, negative, or neutral?
+   Review: *I love the new phone!*”
+   *Output:* `Positive`
+
+2. **Language Translation**
+   *Prompt:* “Translate to French: I am learning AI.”
+   *Output:* `J'apprends l'IA.`
+
+3. **Text Classification**
+   *Prompt:* “Classify this: ‘Bitcoin price hits \$70k’ → Options: Finance, Sports, Health.”
+   *Output:* `Finance`
