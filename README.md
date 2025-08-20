@@ -158,3 +158,59 @@ Input: "The game was fantastic!" → Sentiment:
 Positive
 ```
 
+---
+
+### Chain-of-thought (CoT) prompting
+→ A prompting technique where you ask the AI to **show its step-by-step reasoning** before giving the final answer. It helps the model solve **complex problems** more accurately.
+
+---
+
+### **Examples**
+
+**1. Math Problem**
+**Prompt:**
+
+```
+What is 25 × 12? Think step by step.
+```
+
+**Output:**
+
+```
+25 × 12 = (25 × 10) + (25 × 2) = 250 + 50 = 300.
+Answer: 300
+```
+
+---
+
+**2. Riddle Solving**
+**Prompt:**
+
+```
+If John is older than Mary, and Mary is older than Sam, who is the oldest? Think step by step.
+```
+
+**Output:**
+
+```
+John > Mary > Sam.
+So, John is the oldest.
+```
+
+---
+
+**3. Word Problem**
+**Prompt:**
+
+```
+A train travels 60 km in 1.5 hours. What is its average speed? Think step by step.
+```
+
+**Output:**
+
+```
+Speed = Distance ÷ Time = 60 ÷ 1.5 = 40 km/h.
+Answer: 40 km/h.
+```
+
+---
