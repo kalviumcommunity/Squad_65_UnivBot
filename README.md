@@ -100,3 +100,30 @@ Input: "The food was terrible." → Sentiment:
 ```
 Negative
 ```
+
+
+---
+
+### Dynamic prompting 
+→ A technique where the **prompt changes automatically** based on **user input**, **context**, or **external data** to make AI responses more accurate and relevant.
+
+### **Example**
+
+**Scenario:** A travel chatbot.
+
+**Prompt Template:**
+
+```
+User's location: {city}
+Weather: {weather}
+User: "Suggest me a place to visit."
+
+AI Prompt (dynamic):  
+"It's sunny in {city}. Suggest a good outdoor tourist spot."
+```
+
+**If city = "Delhi" & weather = "sunny":**
+
+```
+Output: "You can visit India Gate or Lodhi Gardens for a great outdoor experience."
+```
