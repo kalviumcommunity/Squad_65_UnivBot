@@ -57,7 +57,10 @@ Context retrieval and function calls are optimized using chunking and prompt tem
 Built on Next.js API routes, the system can be easily scaled using Vercel or edge functions. Gemini API is highly scalable for inference.
 
 
-**Zero-shot prompting** → Asking an AI to perform a task **without giving any examples**, only instructions.
+
+---
+
+### Zero-shot prompting → Asking an AI to perform a task **without giving any examples**, only instructions.
 
 ### **Examples**
 
