@@ -60,7 +60,8 @@ Built on Next.js API routes, the system can be easily scaled using Vercel or edg
 
 ---
 
-### Zero-shot prompting → Asking an AI to perform a task **without giving any examples**, only instructions.
+### Zero-shot prompting 
+→ Asking an AI to perform a task **without giving any examples**, only instructions.
 
 ### **Examples**
 
@@ -76,3 +77,26 @@ Built on Next.js API routes, the system can be easily scaled using Vercel or edg
 3. **Text Classification**
    *Prompt:* “Classify this: ‘Bitcoin price hits \$70k’ → Options: Finance, Sports, Health.”
    *Output:* `Finance`
+
+---
+
+### One-shot prompting 
+→ You give the AI **one example** of the task before asking it to solve a similar problem.
+
+### **Example**
+
+**Prompt:**
+
+```
+Example: 
+Input: "I love this movie!" → Sentiment: Positive
+
+Now, analyze this: 
+Input: "The food was terrible." → Sentiment:
+```
+
+**Output:**
+
+```
+Negative
+```
