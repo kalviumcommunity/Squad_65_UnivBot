@@ -127,3 +127,34 @@ AI Prompt (dynamic):
 ```
 Output: "You can visit India Gate or Lodhi Gardens for a great outdoor experience."
 ```
+
+---
+
+
+### Multi-shot prompting
+→ You give the AI **multiple examples** of how a task should be done before asking it to solve a similar problem. This helps the model understand the **pattern** better and improves accuracy.
+
+### **Example**
+
+**Prompt:**
+
+```
+Example 1:
+Input: "I love this movie!" → Sentiment: Positive
+
+Example 2:
+Input: "This food is horrible." → Sentiment: Negative
+
+Example 3:
+Input: "The book was okay, nothing special." → Sentiment: Neutral
+
+Now analyze this:
+Input: "The game was fantastic!" → Sentiment:
+```
+
+**Output:**
+
+```
+Positive
+```
+
