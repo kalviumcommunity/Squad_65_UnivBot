@@ -288,3 +288,4 @@ $$
 A and B are **very similar** because the cosine similarity is close to **1**.
 
 ---
+
